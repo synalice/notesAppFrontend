@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   css: ["~/node_modules/bootstrap/dist/css/bootstrap.min.css"],
 
   app: {
@@ -15,4 +16,8 @@ export default defineNuxtConfig({
   },
 
   modules: ["@nuxt/image"],
+
+  routeRules: {
+    "/account": { ssr: false },
+  },
 });

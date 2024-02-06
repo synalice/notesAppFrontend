@@ -1,5 +1,5 @@
 <script setup>
-let email = ref()
+let nickname = ref()
 let password = ref()
 
 let form = ref()
@@ -25,7 +25,7 @@ async function login() {
   const { data, error } = await useFetch('http://localhost:8080/api/v1/login', {
     method: "post",
     body: {
-      "email": email.value,
+      "nickname": nickname.value,
       "password": password.value
     }
   })
@@ -44,8 +44,8 @@ async function login() {
   <form ref="form" :class="{ 'was-validated': wasValidated }" class="d-flex flex-column w-100 needs-validation" novalidate
     @submit.prevent="onSubmit">
     <div class="mb-3">
-      <label for="InputEmail" class="form-label">Электронная почта</label>
-      <input v-model="email" type="email" class="form-control" id="InputEmail" required>
+      <label for="InputNickname" class="form-label">Имя аккаунта</label>
+      <input v-model="nickname" type="text" class="form-control" id="InputNickname" required>
     </div>
     <div class="mb-3">
       <label for="InputPassword" class="form-label">Пароль</label>
