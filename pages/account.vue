@@ -2,16 +2,51 @@
 definePageMeta({
   middleware: "auth"
 });
+
+let accountData = ref(null)
+
+const { data, pending, error } = await useFetch('http://localhost:8080/api/v1/account-data', {
+  query: {
+    "id": 11
+  }
+})
 </script>
 
 <template>
-  <section class="container">
-    <div class="card">
-      <!-- <NuxtImg src="public/favicon.ico" class="card-img-top" alt="..."> -->
+  <AccountHeader />
+  <AccountPosts>
+    <div v-if="pending" class="card">
+      <h5 class="card-title card-header">
+        <slot name="title">Загрузка</slot>
+      </h5>
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        ...
       </div>
     </div>
-  </section>
+    <div v-else-if="error" class="card">
+      <h5 class="card-title card-header">
+        <slot name="title">Ошибка</slot>
+      </h5>
+      <div class="card-body">
+        {{ error }}
+      </div>
+    </div>
+    <div v-else-if="data.notes.length === 0" class="card">
+      <h5 class="card-title card-header">
+        <slot name="title">Заметки отсутствуют :(</slot>
+      </h5>
+      <div class="card-body">
+        Тут пока что ничего нет.
+      </div>
+    </div>
+    <template v-else>
+      <AccountPost v-for="note in data.notes">
+        <template #title>{{ note.title }}</template>
+        <template #author-nickname>{{ data.user.nickname }}</template>
+        <template #date-created>{{ note.date_created }}</template>
+        <template #symbols>{{ note.symbols }}</template>
+        <template #contents>{{ note.contents }}</template>
+      </AccountPost>
+    </template>
+  </AccountPosts>
 </template>
