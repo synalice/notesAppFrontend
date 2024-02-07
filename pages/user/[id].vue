@@ -1,15 +1,10 @@
 <script setup>
 import { jwtDecode } from "jwt-decode";
 
-// definePageMeta({
-//   middleware: [
-//     "error-if-no-such-user"
-//   ]
-// });
-
 const route = useRoute()
 
-const { data, pending, error } = await useFetch('http://localhost:8080/api/v1/account-data', {
+
+const { data, pending, error } = useFetch('http://localhost:8080/api/v1/account-data', {
   query: {
     "id": route.params.id
   }

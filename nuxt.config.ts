@@ -19,5 +19,9 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/account": { ssr: false },
+    // TODO: This sollution is ducktape but it works. To make things better - find a way to make
+    //       useFetch calls only on client (probably call them only in components and wrap those
+    //       inside <ClientOnly/>).
+    "/user/**": { ssr: false },
   },
 });
