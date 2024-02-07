@@ -1,5 +1,13 @@
 <script setup>
 const props = defineProps({
+  isLoggedIn: {
+    type: Boolean,
+    default: false
+  },
+  isUsersProfile: {
+    type: Boolean,
+    default: false
+  },
   pending: {
     type: Boolean,
     default: false
@@ -48,7 +56,10 @@ const props = defineProps({
                 {{ props.nickname }}
               </h5>
               <h6 class="card-subtitle mb-2 text-body-secondary">
-                Зарегистрирован: {{ props.registeredDate }}
+                Зарегистрирован:
+                <ClientOnly fallback-tag="span" fallback="Загрузка даты...">
+                  {{ new Date(props.registeredDate).toLocaleString() }}
+                </ClientOnly>
               </h6>
               <h6 class="card-subtitle mb-2 text-body-secondary">
                 Количество постов: {{ props.numberOfPosts }}
@@ -56,7 +67,7 @@ const props = defineProps({
             </div>
           </div>
         </div>
-        <AccountHeaderButtons />
+        <AccountHeaderButtons :is-users-profile="isUsersProfile" :is-logged-in="isLoggedIn" />
       </div>
     </div>
   </section>
