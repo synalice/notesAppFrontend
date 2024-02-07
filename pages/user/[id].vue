@@ -52,6 +52,14 @@ const isLoggedIn = computed(() => {
     <template v-if="pending">
       <AccountHeader pending />
     </template>
+    <div v-else-if="error" class="card">
+      <h5 class="card-title card-header">
+        Ошибка
+      </h5>
+      <div class="card-body">
+        Пользователь не найден.
+      </div>
+    </div>
     <template v-else>
       <AccountHeader :is-users-profile="isUsersProfile" :is-logged-in="isLoggedIn" :nickname="data.user.nickname"
         :registered-date="data.user.dateCreated" :number-of-posts="data.numberOfNotes" />
@@ -65,14 +73,8 @@ const isLoggedIn = computed(() => {
           ...
         </div>
       </div>
-      <div v-else-if="error" class="card">
-        <h5 class="card-title card-header">
-          <slot name="title">Ошибка</slot>
-        </h5>
-        <div class="card-body">
-          {{ error }}
-        </div>
-      </div>
+      <template v-else-if="error">
+      </template>
       <div v-else-if="data.notes === null" class="card">
         <h5 class="card-title card-header">
           <slot name="title">Заметки отсутствуют :(</slot>
