@@ -23,7 +23,7 @@ function onSubmit(event) {
 }
 
 async function register() {
-  const { data, error } = await useFetch('http://localhost:8080/api/v1/register', {
+  const { data, error } = await useFetch('http://app:8080/api/v1/register', {
     method: "post",
     body: {
       "nickname": nickname.value,

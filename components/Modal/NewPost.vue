@@ -22,7 +22,7 @@ function onSubmit(event) {
 }
 
 async function post() {
-  const { data, error } = await useFetch('http://localhost:8080/api/v1/new-post', {
+  const { data, error } = await useFetch('http://app:8080/api/v1/new-post', {
     method: "post",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("jwtToken")
