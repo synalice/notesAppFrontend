@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 const route = useRoute()
 
 
-const { data, pending, error } = useFetch('http://app:8080/api/v1/account-data', {
+const { data, pending, error } = useFetch('https://syn-dev.ru/api/v1/account-data', {
   query: {
     "id": route.params.id
   }

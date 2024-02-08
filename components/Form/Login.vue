@@ -22,7 +22,7 @@ function onSubmit(event) {
 }
 
 async function login() {
-  const { data, error } = await useFetch('http://app:8080/api/v1/login', {
+  const { data, error } = await useFetch('https://syn-dev.ru/api/v1/login', {
     method: "post",
     body: {
       "nickname": nickname.value,
