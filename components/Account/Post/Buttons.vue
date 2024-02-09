@@ -1,21 +1,25 @@
+<script setup>
+const props = defineProps({
+  isUsersProfile: {
+    type: Boolean,
+    default: false
+  },
+})
+</script>
+
 <template>
   <div class="d-flex gap-1">
-    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">
+    <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="button">
       В избранное
     </button>
-    <button type="button" class="btn btn-outline-secondary">
-      Редактировать
-    </button>
-    <button type="button" class="btn btn-outline-danger">
-      Удалить
-    </button>
-  </div>
+    <template v-if="props.isUsersProfile">
+      <button type="button" class="btn btn-outline-secondary btn-sm">
+        Редактировать
+      </button>
+      <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteNote">
+        Удалить
+      </button>
+    </template>
+    <ModalConfirm id="deleteNote" text="Вы уверены, что хотитите удалить эту заметку?" :on-confirm="console.log('aaaa')"/>
+    </div>
 </template>
-
-<!-- <style scoped>
-.btn-outline-success :hover{
-  color: var(--bs-btn-hover-color);
-  background-color: var(--bs-btn-hover-bg);
-  border-color: var(--bs-btn-hover-border-color);
-}
-</style> -->

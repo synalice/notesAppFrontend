@@ -39,5 +39,6 @@
         Аккаунт
       </NavbarItem>
     </ul>
+    <ModalConfirm id="clearConfirmModal" text="Вы уверены, что хотитите очистить список избранных заметок? Сами заметки удалены не будут." />
   </div>
 </template>

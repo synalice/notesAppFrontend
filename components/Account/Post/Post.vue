@@ -1,3 +1,16 @@
+<script setup>
+const props = defineProps({
+  isLoggedIn: {
+    type: Boolean,
+    default: false
+  },
+  isUsersProfile: {
+    type: Boolean,
+    default: false
+  },
+})
+</script>
+
 <template>
   <div class="card w-100">
     <h5 class="card-title card-header">
@@ -19,8 +32,10 @@
         <slot name="contents"></slot>
       </p>
     </div>
-    <div class="card-footer">
-      <AccountPostButtons />
+    <div v-if="props.isLoggedIn" class="card-footer">
+      <AccountPostButtons
+        :is-users-profile="isUsersProfile"
+      />
     </div>
   </div>
 </template>

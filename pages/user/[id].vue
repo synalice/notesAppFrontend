@@ -81,7 +81,11 @@ const isLoggedIn = computed(() => {
         </div>
       </div>
       <template v-else>
-        <AccountPost v-for="note in data.notes">
+        <AccountPost
+          v-for="note in data.notes"
+          :is-logged-in="isLoggedIn"
+          :is-users-profile="isUsersProfile"
+        >
           <template #title>{{ note.title }}</template>
           <template #author-nickname>{{ data.user.nickname }}</template>
           <template #date-created>

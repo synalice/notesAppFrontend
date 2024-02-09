@@ -25,7 +25,7 @@ function onSubmit(event) {
 }
 
 async function post() {
-  const { data, error } = await useFetch(`${config.public.backendApi}/api/v1/new-post`, {
+  const { data, error } = await useFetch(`${config.public.backendApi}/api/v1/post/new`, {
     method: "post",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("jwtToken")

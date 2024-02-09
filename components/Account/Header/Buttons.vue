@@ -28,7 +28,7 @@ function logout() {
           Выйти из аккаунта
         </button>
       </div>
-      <ModalNewPost />
+      <!-- <ModalNewPost /> -->
     </div>
   </ClientOnly>
 </template>
