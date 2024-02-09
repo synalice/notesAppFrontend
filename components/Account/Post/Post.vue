@@ -5,11 +5,11 @@
     </h5>
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-body-secondary">
-        <slot name="author-nickname"></slot>
+        Автор: <slot name="author-nickname"></slot>
       </h6>
       <h6 class="card-subtitle mb-2 text-body-secondary">
         <ClientOnly fallback-tag="span" fallback="Загрузка даты...">
-          <slot name="date-created"></slot>
+          Дата написания: <slot name="date-created"></slot>
         </ClientOnly>
       </h6>
       <h6 class="card-subtitle mb-2 text-body-secondary">
@@ -18,6 +18,9 @@
       <p class="card-text">
         <slot name="contents"></slot>
       </p>
+    </div>
+    <div class="card-footer">
+      <AccountPostButtons />
     </div>
   </div>
 </template>
