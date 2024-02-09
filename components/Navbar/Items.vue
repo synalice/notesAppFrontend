@@ -6,13 +6,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto">
-      <NavbarItem href="/about">
-        <IconInfoCircle />
-        О сайте
-      </NavbarItem>
-      <NavbarItem href="/settings">
-        <IconGear />
-        Настройки
+      <NavbarItem href="/people">
+        <IconPeople/>
+        Другие люди
       </NavbarItem>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 gap-lg-1" href="#" role="button"
