@@ -4,6 +4,7 @@ const config = useRuntimeConfig()
 let title = ref()
 let contents = ref()
 
+let modal = ref()
 let form = ref()
 let wasValidated = ref(false)
 
@@ -39,11 +40,14 @@ async function post() {
     console.log(error.value);
     return
   }
+
+  bootstrap.Modal.getInstance(modal.value).hide()
+  refreshNuxtData()
 }
 </script>
 
 <template>
-  <div class="modal fade" id="createNewPostModal" tabindex="-1">
+  <div ref="modal" class="modal fade" id="createNewPostModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
