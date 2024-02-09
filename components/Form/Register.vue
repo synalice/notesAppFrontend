@@ -4,23 +4,32 @@ const config = useRuntimeConfig()
 let nickname = ref()
 let password = ref()
 let passwordRepeat = ref()
+const passwordsDontMatch = ref(false)
 
 let form = ref()
 let wasValidated = ref(false)
 
 function onSubmit(event) {
-  let isValid = true
- 
+  let isInvalid = false
+
   if (!form.value.checkValidity()) {
-    isValid = false
+    isInvalid = true
     event.preventDefault()
     event.stopPropagation()
   }
 
+  if (password.value !== passwordRepeat.value) {
+    isInvalid = true
+    passwordsDontMatch.value = true
+  } else {
+    passwordsDontMatch.value = false
+  }
+
   wasValidated.value = true
-  
-  if (isValid) {
+
+  if (isInvalid === false) {
     register()
+    wasValidated.value = false
   }
 }
 
@@ -57,12 +66,18 @@ async function register() {
         Пароль
       </label>
       <input v-model="password" type="password" class="form-control" id="InputPassword" required>
+      <p v-if="passwordsDontMatch" class="text-danger mb-0">
+        Пароли не совпадают!
+      </p>
     </div>
     <div class="mb-3">
       <label for="RepeatPassword" class="form-label">
         Пароль ещё раз
       </label>
       <input v-model="passwordRepeat" type="password" class="form-control" id="RepeatPassword" required>
+      <p v-if="passwordsDontMatch" class="text-danger mb-0">
+        Пароли не совпадают!
+      </p>
     </div>
     <button class="btn btn-primary align-self-center">
       Зарегистрироваться
