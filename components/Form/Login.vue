@@ -1,4 +1,6 @@
 <script setup>
+const config = useRuntimeConfig()
+
 let nickname = ref()
 let password = ref()
 
@@ -22,7 +24,7 @@ function onSubmit(event) {
 }
 
 async function login() {
-  const { data, error } = await useFetch('https://syn-dev.ru/api/v1/login', {
+  const { data, error } = await useFetch(`${config.public.backendApi}/api/v1/login`, {
     method: "post",
     body: {
       "nickname": nickname.value,

@@ -1,5 +1,15 @@
+const devApi = "http://localhost:8080"
+const prodApi = "https://syn-dev.ru";
+const backendApi = process.env.NODE_ENV === "development" ? devApi : prodApi;
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      backendApi: backendApi,
+    },
+  },
+
   devtools: { enabled: true },
 
   css: ["~/node_modules/bootstrap/dist/css/bootstrap.min.css"],

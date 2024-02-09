@@ -1,4 +1,6 @@
 <script setup>
+const config = useRuntimeConfig()
+
 let title = ref()
 let contents = ref()
 
@@ -22,7 +24,7 @@ function onSubmit(event) {
 }
 
 async function post() {
-  const { data, error } = await useFetch('https://syn-dev.ru/api/v1/new-post', {
+  const { data, error } = await useFetch(`${config.public.backendApi}/api/v1/new-post`, {
     method: "post",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("jwtToken")
